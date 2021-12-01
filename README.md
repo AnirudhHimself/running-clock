@@ -1,2 +1,3 @@
 # time-stuff
-A stopwatch app without ads
+
+A stopwatch app without ads.
