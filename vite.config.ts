@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import viteCompression from "vite-plugin-compression";
 import react from "@vitejs/plugin-react";
 import path from "path/posix";
 
@@ -13,5 +12,5 @@ export default defineConfig({
       },
     ],
   },
-  plugins: [react(), viteCompression()],
+  plugins: [react()],
 });
