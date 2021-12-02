@@ -1,0 +1,51 @@
+:root {
+  /* Spacing */
+  --p-1: 8px;
+  --p-2: calc(var(--p-1) * 2);
+  --p-3: calc(var(--p-1) * 3);
+  --p-4: calc(var(--p-1) * 4);
+  --p-5: calc(var(--p-1) * 5);
+
+  /* Radius */
+  --rad-1: 4px;
+  --rad-2: calc(var(--rad-1) * 2);
+
+  /* Typography */
+  --ff: "Inter", sans-serif;
+  --ff-mono: "Roboto Mono", monospace;
+
+  --fs-small: 1em;
+  --fs-medium: 1.2em;
+  --fs-large: 2em;
+
+  --lh-default: 1.4em;
+
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Specialty */
+  --border-dark-thick: 4px solid black;
+  --border-dark-medium: 2px solid black;
+  --shadow: rgba(0, 0, 0, 0.12) 0px 8px 30px 0px;
+  --purple: rgb(128, 0, 128);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: white;
+  display: grid;
+  place-content: center;
+  min-height: 75vh;
+}
+
+@media screen and (max-width: 375px) {
+  :root {
+    --p-4: var(--p-3);
+    --p-3: var(--p-2);
+  }
+}

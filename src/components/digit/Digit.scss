@@ -1,0 +1,40 @@
+.digit {
+  display: inline-block;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-large);
+  font-weight: var(--fw-medium);
+  padding: var(--p-1) var(--p-2);
+}
+
+.animate-digit {
+  animation: 250ms animate-digit-entrance ease-in;
+  will-change: opacity, transform;
+}
+
+.digit-container {
+  border: var(--border-dark-medium);
+  border-radius: var(--rad-1);
+  display: inline-block;
+  margin: 0px 4px;
+  overflow: hidden;
+  &:is(:first-child) {
+    margin-left: 0px;
+  }
+}
+
+@keyframes animate-digit-entrance {
+  0% {
+    transform: translate(0px, -25px);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translate(0px, 10px);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+  }
+}

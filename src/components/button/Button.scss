@@ -1,0 +1,55 @@
+.btn {
+  border: var(--border-dark-medium);
+  border-radius: var(--rad-1);
+  background-color: black;
+  color: white;
+  font-size: var(--fs-small);
+  font-family: var(--ff);
+  font-weight: var(--fw-medium);
+  min-width: 105px;
+  padding: var(--p-1) var(--p-3);
+  text-transform: uppercase;
+  user-select: none;
+  &:hover {
+    background-color: white;
+    color: black;
+    text-decoration: underline;
+    transition: background-color 150ms ease-in;
+  }
+  &:active {
+    background-color: rgba(209, 207, 216, 0.3);
+    color: black;
+  }
+  &:focus {
+    outline: 2px dashed black;
+    outline-offset: 2px;
+  }
+}
+
+.btn-secondary {
+  background-color: rgba(209, 207, 216, 0.3);
+  border: 2px solid transparent;
+  color: black;
+  &:hover {
+    background-color: rgba(209, 207, 216, 0.6);
+  }
+  &:active {
+    background-color: rgba(209, 207, 216, 0.9);
+  }
+}
+
+.btn-inactive,
+.btn-inactive:hover,
+.btn-inactive:active {
+  background: repeating-linear-gradient(
+    -145deg,
+    rgba(209, 207, 216, 0),
+    rgba(209, 207, 216, 0) 10px,
+    rgba(209, 207, 216, 0.8) 10px,
+    rgba(209, 207, 216, 0.8) 20px
+  );
+  border: 2px solid transparent;
+  color: black;
+  cursor: not-allowed;
+  text-decoration: none;
+}

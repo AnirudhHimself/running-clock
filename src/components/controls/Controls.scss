@@ -1,0 +1,11 @@
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-width: 300px;
+  padding: var(--p-3) 0 var(--p-1) 0;
+}
+
+.controls > * {
+  margin-right: var(--p-1);
+}
