@@ -30,19 +30,6 @@
   --purple: rgb(128, 0, 128);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: white;
-  display: grid;
-  place-content: center;
-  min-height: 75vh;
-}
-
 @media screen and (max-width: 375px) {
   :root {
     --p-4: var(--p-3);
