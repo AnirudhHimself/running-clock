@@ -71,14 +71,33 @@
   --color-text-default: #282e31;
 
   --color-accent-green-100: #e8f6ee;
+  --color-accent-green-300: #a3ddbc;
+
   --color-accent-orange-100: #fff8eb;
-  --color-accent-yellow-200: #feffb3;
+  --color-accent-orange-300: #ffe4af;
+
+  --color-accent-yellow-100: #fafae4;
+  --color-accent-yellow-300: #feffb3;
+
+  --color-neutral-300: #e0e0e0;
+  --color-neutral-400: #bdbdbd;
+  --color-neutral-600: #757575;
+  --color-neutral-800: #424242;
 
   /* Specialty */
-  --filter-blur-heavy: 560px;
-  --filter-blur-light: 24px;
+  --filter-blur-xs: 24px;
+
+  --filter-blur-l: 192px;
+  --filter-blur-xl: 432px;
+
+  --shadow-extra-light: 0px 1px 3px 0px rgba(48, 49, 51, 0.1),
+    0px 0px 1px 0px rgba(48, 49, 51, 0.05);
   --shadow-light: 0px 0px 1px rgba(48, 49, 51, 0.05),
     0px 2px 4px rgba(48, 49, 51, 0.1);
   --shadow-medium: 0px 0px 1px rgba(48, 49, 51, 0.05),
     0px 8px 16px rgba(48, 49, 51, 0.1);
+  --shadow-large: 0px 8px 16px 0px rgba(86, 63, 216, 0.1),
+    0px 0px 1px 0px rgba(86, 63, 216, 0.05);
+  --shadow-extra-large: 0px 16px 24px 0px rgba(86, 63, 216, 0.1),
+    0px 0px 1px 0px rgba(86, 63, 216, 0.05);
 }

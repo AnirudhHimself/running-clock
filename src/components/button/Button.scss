@@ -1,23 +1,29 @@
+@import "styles/mixins.scss";
+
 .btn {
-  background-color: var(--color-primary-400);
+  background-color: var(--color-primary-500);
   border: 2px solid transparent;
   border-radius: var(--rad-16);
+  box-shadow: var(--shadow-extra-light);
   color: white;
   font-family: var(--ff);
   font-size: var(--fs-buttons);
   font-weight: var(--fw-bold);
   min-width: 110px;
-  padding: var(--s-2) var(--s-3);
+  padding: 12px var(--s-3);
   text-transform: capitalize;
+  transition: background-color 150ms ease-in, box-shadow 150ms ease-in;
   user-select: none;
+  @include respond-to("medium") {
+    padding: var(--s-1) var(--s-3);
+  }
   &:hover {
-    background-color: var(--color-primary-500);
+    background-color: var(--color-primary-600);
     text-decoration: underline;
-    transition: background-color 150ms ease-in;
   }
   &:active {
-    background-color: var(--color-primary-600);
-    box-shadow: 2px 3px 2px 2px var(--color-primary-100);
+    background-color: var(--color-primary-700);
+    box-shadow: none;
   }
   &:focus {
     outline: 2px dashed var(--color-primary-400);
@@ -27,14 +33,20 @@
 
 .btn-secondary {
   background-color: white;
-  border: 2px solid var(--color-primary-400);
-  color: var(--color-primary-600);
+  border: 2px solid var(--color-neutral-300);
+  color: var(--color-neutral-800);
+  transition: border 150ms ease-in, background-color 150ms ease-in,
+    box-shadow 150ms ease-in, color 150ms ease-in;
   &:hover {
     background-color: var(--color-primary-100);
+    border: 2px solid var(--color-primary-300);
+    color: var(--color-primary-700);
   }
   &:active {
     background-color: var(--color-primary-200);
-    box-shadow: 2px 3px 2px 2px var(--color-primary-100);
+    border: 2px solid var(--color-primary-500);
+    box-shadow: none;
+    color: var(--color-primary-700);
   }
 }
 

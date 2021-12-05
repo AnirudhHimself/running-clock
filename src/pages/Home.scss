@@ -13,7 +13,8 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  padding-bottom: var(--s-2);
+  padding: 0 var(--s-2) var(--s-2) 0;
+  user-select: none;
 }
 
 .home-page {
