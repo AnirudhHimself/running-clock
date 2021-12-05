@@ -1,13 +1,13 @@
 .btn {
-  border: transparent;
-  border-radius: var(--rad-16);
   background-color: var(--color-primary-400);
+  border: 2px solid transparent;
+  border-radius: var(--rad-16);
   color: white;
-  font-size: var(--fs-buttons);
   font-family: var(--ff);
+  font-size: var(--fs-buttons);
   font-weight: var(--fw-bold);
-  padding: var(--s-2) var(--s-3);
   min-width: 110px;
+  padding: var(--s-2) var(--s-3);
   text-transform: capitalize;
   user-select: none;
   &:hover {

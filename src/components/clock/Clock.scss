@@ -1,4 +1,9 @@
+@import "styles/mixins.scss";
+
 .clock {
-  padding: 128px 0;
+  padding: var(--s-12) 0;
   user-select: none;
+  @include respond-to("medium") {
+    padding: var(--s-8) 0;
+  }
 }

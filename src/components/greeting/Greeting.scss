@@ -1,9 +1,14 @@
+@import "styles/mixins.scss";
+
 .headline {
-  font-size: var(--fs-h3);
-  font-family: var(--ff);
   color: var(--color-text-default);
+  font-family: var(--ff);
+  font-size: var(--fs-h3);
   line-height: var(--lh-default);
   padding-bottom: var(--s-1);
+  @include respond-to("medium") {
+    font-size: var(--fs-headline-medium-screen);
+  }
 }
 
 .headline-accent {
@@ -11,8 +16,11 @@
 }
 
 .subheadline {
-  font-family: var(--ff);
   font-size: var(--fs-subheadline-small-screen);
+  font-family: var(--ff);
   line-height: var(--lh-default);
   margin-bottom: var(--s-1);
+  @include respond-to("medium") {
+    font-size: var(--fs-subheadline-medium-screen);
+  }
 }

@@ -1,25 +1,18 @@
-@mixin bp-xs {
-  @media screen and (min-width: var(--break-point-xs)) {
-    @content;
-  }
-}
-
 .control-container {
-  width: 100%;
   background: var(--color-secondary-100);
+  border-radius: 0 0 var(--rad-24) var(--rad-24);
   padding: var(--s-3) var(--s-3);
-  border-bottom-left-radius: var(--rad-24);
-  border-bottom-right-radius: var(--rad-24);
+  width: 100%;
 }
 
 .controls-button-group {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  & > :first-child {
-    margin-right: 0px;
-  }
   & > button {
     width: 40%;
+  }
+  & > :first-child {
+    margin-right: 0px;
   }
 }

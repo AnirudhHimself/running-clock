@@ -1,0 +1,23 @@
+$breakpoints: (
+  "xs": 370px,
+  "small": 480px,
+  "medium": 840px,
+  "large": 960px,
+  "xl": 1440px,
+);
+
+/**
+ * Credit:
+ * Kitty Giraudel from
+ * https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+ */
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No value is available for `#{$breakpoint}`."
+            + "These are the available breakpoints: #{map-keys($breakpoints)}.";
+  }
+}
