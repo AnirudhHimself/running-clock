@@ -1,4 +1,4 @@
-import { defineConfig, Terser } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path/posix";
 
@@ -9,6 +9,10 @@ export default defineConfig({
       {
         find: "components",
         replacement: path.resolve(__dirname, "src/components"),
+      },
+      {
+        find: "pages",
+        replacement: path.resolve(__dirname, "src/pages"),
       },
     ],
   },

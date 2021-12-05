@@ -1,0 +1,18 @@
+.headline {
+  font-size: var(--fs-h3);
+  font-family: var(--ff);
+  color: var(--color-text-default);
+  line-height: var(--lh-default);
+  padding-bottom: var(--s-1);
+}
+
+.headline-accent {
+  color: var(--color-primary-500);
+}
+
+.subheadline {
+  font-family: var(--ff);
+  font-size: var(--fs-subheadline-small-screen);
+  line-height: var(--lh-default);
+  margin-bottom: var(--s-1);
+}

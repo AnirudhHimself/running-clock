@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 import "./Digit.scss";
 
+/**
+ * Presentational Component that displays
+ * a single digit of time. It is also
+ * responsible for the entrance animation.
+ */
 export const Digit = (props: any) => {
   const numberRef = useRef<HTMLSpanElement>(null);
 
@@ -11,10 +16,8 @@ export const Digit = (props: any) => {
   });
 
   return (
-    <div className="digit-container" aria-hidden="true">
-      <span key={props.value} className="digit" ref={numberRef}>
-        {props.value}
-      </span>
-    </div>
+    <span key={props.value} className="digit" ref={numberRef}>
+      {props.value}
+    </span>
   );
 };

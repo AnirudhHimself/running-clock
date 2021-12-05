@@ -1,9 +1,4 @@
 @import "./properties.scss";
 @import "./reset.scss";
-
-body {
-  background: white;
-  display: grid;
-  place-content: center;
-  min-height: 75vh;
-}
+@import "./fonts.scss";
+@import "./utilities.scss";

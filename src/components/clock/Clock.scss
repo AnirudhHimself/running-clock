@@ -1,7 +1,4 @@
-.clock-divider {
-  display: inline-block;
-  font-family: var(--ff);
-  font-size: var(--fs-large);
-  font-weight: var(--fw-medium);
-  transform: translateY(-50%);
+.clock {
+  padding: 128px 0;
+  user-select: none;
 }

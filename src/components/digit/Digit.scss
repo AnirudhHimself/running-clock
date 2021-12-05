@@ -1,9 +1,9 @@
 .digit {
   display: inline-block;
   font-family: var(--ff-mono);
-  font-size: var(--fs-large);
+  font-size: var(--fs-clock);
   font-weight: var(--fw-medium);
-  padding: var(--p-1) var(--p-2);
+  padding: var(--s-1) var(--s-1) var(--s-1) 0;
 }
 
 .animate-digit {
@@ -11,25 +11,14 @@
   will-change: opacity, transform;
 }
 
-.digit-container {
-  border: var(--border-dark-medium);
-  border-radius: var(--rad-1);
-  display: inline-block;
-  margin: 0px 4px;
-  overflow: hidden;
-  &:is(:first-child) {
-    margin-left: 0px;
-  }
-}
-
 @keyframes animate-digit-entrance {
   0% {
-    transform: translate(0px, -25px);
+    transform: translate(0px, calc(-1 * var(--s-5)));
     opacity: 0;
   }
 
   70% {
-    transform: translate(0px, 10px);
+    transform: translate(0px, var(--s-2));
     opacity: 0.6;
   }
 
