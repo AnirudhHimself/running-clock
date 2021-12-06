@@ -9,8 +9,8 @@ export type IStorage = {
  * @param key
  * @returns
  */
-export const readFromStorage = (key: string): string => {
-  return window.localStorage.getItem(key) ?? "";
+export const readFromStorage = (key: string): string | null => {
+  return window.localStorage.getItem(key);
 };
 
 /**
@@ -20,9 +20,9 @@ export const readFromStorage = (key: string): string => {
  */
 export const readStopwatchData = () => {
   return {
-    timestamp: JSON.parse(readFromStorage("timestamp")),
-    isRunning: JSON.parse(readFromStorage("isRunning")),
-    elapsedTime: JSON.parse(readFromStorage("elapsedTime")),
+    timestamp: JSON.parse(readFromStorage("timestamp") ?? ""),
+    isRunning: JSON.parse(readFromStorage("isRunning") ?? ""),
+    elapsedTime: JSON.parse(readFromStorage("elapsedTime") ?? ""),
   };
 };
 
