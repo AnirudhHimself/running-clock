@@ -18,6 +18,10 @@ export default defineConfig({
         find: "styles",
         replacement: path.resolve(__dirname, "src/styles"),
       },
+      {
+        find: "utilities",
+        replacement: path.resolve(__dirname, "src/utilities"),
+      },
     ],
   },
   plugins: [react()],

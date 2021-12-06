@@ -1,5 +1,6 @@
 :root {
   /* Spacing */
+  --s-half: 4px;
   --s-1: 8px;
   --s-2: 16px;
   --s-3: 24px;
@@ -22,7 +23,7 @@
 
   /* Typography */
   --ff: "Inter", sans-serif;
-  --ff-mono: "Roboto Mono", monospace;
+  --ff-mono: "Azeret Mono", monospace;
 
   // Adapted From Major Third Type Scale
   --fs-h1: 3.815rem;
@@ -42,7 +43,7 @@
   --fs-subheadline-medium-screen: var(--fs-h5);
   --fs-subheadline-large-screen: var(--fs-h4);
 
-  --fs-clock: var(--fs-h1);
+  --fs-clock: 4rem;
   --fs-button: var(--fs-body);
 
   --lh-default: 1.4em;
@@ -86,7 +87,6 @@
 
   /* Specialty */
   --filter-blur-xs: 24px;
-
   --filter-blur-l: 192px;
   --filter-blur-xl: 432px;
 

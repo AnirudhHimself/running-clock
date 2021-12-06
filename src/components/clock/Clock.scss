@@ -1,9 +1,7 @@
 @import "styles/mixins.scss";
 
 .clock {
-  padding: var(--s-12) 0;
+  font-size: var(--fs-clock);
+  padding-top: var(--s-10);
   user-select: none;
-  @include respond-to("medium") {
-    padding: var(--s-8) 0;
-  }
 }

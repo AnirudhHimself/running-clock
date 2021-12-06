@@ -5,6 +5,8 @@
   box-shadow: var(--shadow-large);
   display: flex;
   flex-direction: column;
-  max-width: 450px;
-  min-width: 297px; /* For the ~Aesthetic~ */
+  justify-content: space-between;
+  max-width: 448px;
+  min-width: 296px; /* For the ~Aesthetic~ */
+  min-height: 302px;
 }

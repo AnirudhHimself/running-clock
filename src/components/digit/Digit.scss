@@ -1,14 +1,15 @@
 .digit {
   display: inline-block;
   font-family: var(--ff-mono);
-  font-size: var(--fs-clock);
-  font-weight: var(--fw-medium);
-  padding: var(--s-1) var(--s-1) var(--s-1) 0;
+  font-kerning: none;
+  letter-spacing: 0ch;
+  line-height: 0;
+  padding: 0;
+  will-change: opacity, transform;
 }
 
 .animate-digit {
   animation: 250ms animate-digit-entrance ease-in;
-  will-change: opacity, transform;
 }
 
 @keyframes animate-digit-entrance {

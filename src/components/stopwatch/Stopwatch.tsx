@@ -1,16 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 import { Controls } from "components/controls";
 import { Button } from "components/button";
 import { Clock } from "components/clock";
+import { readStopwatchData, writeStopwatchData } from "utilities";
 
 import "./Stopwatch.scss";
 
 export const Stopwatch = () => {
-  const MAX_ALLOWED_TIME = 5999;
-  const [rawElapsedTime, setRawElapsedTime] = useState(0);
-  const [isClockRunning, setIsClockRunning] = useState(false);
-  const [formattedElapsedTime, setFormattedElapsedTime] = useState("");
+  const [startTime, setStartTime] = useState<number>(0);
+  const [isClockRunning, setIsClockRunning] = useState<boolean>(false);
+  const [secondsElapsed, setSecondsElapsed] = useState<number>(0);
+
+  /**
+   * Initialize state from Storage (If it exists).
+   * (We do not want to render until all state is synced up).
+   */
+  useLayoutEffect(() => {
+    const { elapsedTime, isRunning, timestamp } = readStopwatchData();
+    if (timestamp > 0 && isRunning) {
+      setStartTime(timestamp);
+      setSecondsElapsed(Math.round((Date.now() - timestamp) / 1000));
+      setIsClockRunning(true);
+    }
+    if (timestamp > 0 && !isRunning) {
+      setStartTime(Date.now() - (timestamp - elapsedTime));
+      setSecondsElapsed(elapsedTime);
+    }
+  }, []);
 
   /**
    * We run the stopwatch. setInterval has no actual guarantees for accuracy.
@@ -21,111 +38,61 @@ export const Stopwatch = () => {
   useEffect(() => {
     let interval: number;
     if (isClockRunning) {
-      const startTime = Date.now() - rawElapsedTime * 1000;
+      const newStartTime = Date.now() - secondsElapsed * 1000;
+      setStartTime(newStartTime);
       interval = window.setInterval(() => {
         const newTime = Date.now();
-        setRawElapsedTime(Math.round((newTime - startTime) / 1000));
+        setSecondsElapsed(Math.round((newTime - newStartTime) / 1000));
       }, 1000);
     }
-
     return () => {
       clearInterval(interval);
     };
   }, [isClockRunning]);
 
   /**
-   * We format the time so that it is ready to consume by the
-   * clock component.
+   * Call updateStorage helper when any of secondsElapsed, isClockRunning,
+   * or startTime changes.
    */
   useEffect(() => {
-    if (rawElapsedTime >= MAX_ALLOWED_TIME) {
-      setIsClockRunning(false);
-    }
-    const seconds = rawElapsedTime % 60;
-    const minutes = Math.floor(rawElapsedTime / 60);
-    const stringFormattedTime = padNumber(minutes) + padNumber(seconds);
-    setFormattedElapsedTime(stringFormattedTime);
-  }, [rawElapsedTime]);
-
-  /**
-   * We update the page title to match the elapsed time.
-   */
-  useEffect(() => {
-    if (rawElapsedTime) {
-      document.title = getPageTitle();
-    }
-  }, [formattedElapsedTime]);
+    updateStorage();
+  }, [startTime, isClockRunning, secondsElapsed]);
 
   const handleStartClick = () => {
-    if (!hasReachedMaxTime()) {
-      setIsClockRunning(!isClockRunning);
-    }
+    setIsClockRunning(!isClockRunning);
   };
 
   const handleResetClick = () => {
-    setRawElapsedTime(0);
+    setSecondsElapsed(0);
     setIsClockRunning(false);
-    document.title = "stopwatch";
-  };
-
-  const padNumber = (n: number) => {
-    return n < 10 ? "0" + String(n) : String(n);
+    setStartTime(0);
+    document.title = "Running Clock";
   };
 
   /**
-   * We've arbitrarily set a maximum time so the numbers fit the design.
-   * (Which is also arbitrary).
+   * Helper to update storage when our clock has updated.
    */
-  const hasReachedMaxTime = () => {
-    return !(rawElapsedTime < MAX_ALLOWED_TIME);
-  };
-
-  /**
-   * The display is aria-hidden, so we add this label.
-   * @returns A formatted human listenable string of the elapsed time.
-   */
-  const getAriaLabel = () => {
-    const label = `
-    ${Number(formattedElapsedTime.slice(0, 2))} minutes and ${Number(
-      formattedElapsedTime.slice(-2)
-    )} seconds.
-    `;
-    return label.trim();
-  };
-
-  /**
-   * When the stopwatch is running, we want to set the stopwatch to the current
-   * elapsed time. This is a helper function to format the elapsed time in such
-   * a way that we can set the page title.
-   */
-  const getPageTitle = () => {
-    return `
-      ${Number(formattedElapsedTime.slice(0, 2))}m${Number(
-      formattedElapsedTime.slice(-2)
-    )}s
-    `;
+  const updateStorage = () => {
+    const newData = {
+      timestamp: startTime,
+      isRunning: isClockRunning,
+      elapsedTime: secondsElapsed,
+    };
+    writeStopwatchData(newData);
   };
 
   return (
     <article className="stopwatch">
-      <Clock value={formattedElapsedTime} ariaLabel={getAriaLabel()} />
+      <Clock value={secondsElapsed} />
       <Controls>
-        <Button
-          handleClick={handleStartClick}
-          variant={hasReachedMaxTime() ? "inactive" : "primary"}
-        >
+        <Button handleClick={handleStartClick} variant={"primary"}>
           {isClockRunning === true
             ? "Pause"
-            : hasReachedMaxTime()
-            ? "The End"
-            : rawElapsedTime === 0
+            : secondsElapsed === 0
             ? "Start"
             : "Resume"}
         </Button>
-        <Button
-          handleClick={handleResetClick}
-          variant={hasReachedMaxTime() ? "primary" : "secondary"}
-        >
+        <Button handleClick={handleResetClick} variant={"secondary"}>
           Reset
         </Button>
       </Controls>

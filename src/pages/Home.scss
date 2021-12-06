@@ -22,8 +22,8 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: var(--break-point-xl);
   min-height: 100vh;
+  min-width: 328px;
   padding: var(--s-4) var(--s-4) var(--s-4) var(--s-4);
   position: relative;
   width: 100%;
@@ -36,9 +36,9 @@
 }
 
 .page-bg-blur {
-  background: var(--color-accent-green-100);
-  filter: blur(200px);
+  background: var(--color-accent-yellow-100);
   height: 100%;
+  opacity: 0.6;
   position: absolute;
   left: 0;
   top: 0;
