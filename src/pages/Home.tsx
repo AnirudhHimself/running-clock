@@ -6,7 +6,7 @@ import "./Home.scss";
 export function Home() {
   return (
     <div className="home-page">
-      <div className="page-bg-blur"></div>
+      <div className="page-bg"></div>
       <section className="heading-content">
         <Greeting />
       </section>
