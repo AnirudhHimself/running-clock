@@ -1,67 +1,51 @@
 @import "styles/mixins.scss";
 
 .btn {
-  background-color: var(--color-primary-500);
-  border: 2px solid transparent;
-  border-radius: var(--rad-16);
-  box-shadow: var(--shadow-extra-light);
+  background-color: var(--primary-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-16);
+  box-shadow: var(--shadow-2);
   color: white;
   font-family: var(--ff);
-  font-size: var(--fs-buttons);
+  font-size: var(--fs-button);
   font-weight: var(--fw-bold);
-  min-width: 110px;
-  padding: 12px var(--s-3);
+  min-width: var(--spacing-14);
+  padding: 12px var(--spacing-3);
   text-transform: capitalize;
   transition: background-color 150ms ease-in, box-shadow 150ms ease-in;
   user-select: none;
   @include respond-to("medium") {
-    padding: var(--s-1) var(--s-3);
+    padding: var(--spacing-1) var(--spacing-3);
   }
   &:hover {
-    background-color: var(--color-primary-600);
+    background-color: var(--primary-6);
     text-decoration: underline;
   }
   &:active {
-    background-color: var(--color-primary-700);
+    background-color: var(--primary-7);
     box-shadow: none;
   }
   &:focus {
-    outline: 2px dashed var(--color-primary-400);
+    outline: 2px dashed var(--primary-4);
     outline-offset: 2px;
   }
 }
 
 .btn-secondary {
   background-color: white;
-  border: 2px solid var(--color-neutral-300);
-  color: var(--color-neutral-800);
+  border: 1px solid var(--grey-3);
+  color: var(--text-color);
   transition: border 150ms ease-in, background-color 150ms ease-in,
     box-shadow 150ms ease-in, color 150ms ease-in;
   &:hover {
-    background-color: var(--color-primary-100);
-    border: 2px solid var(--color-primary-300);
-    color: var(--color-primary-700);
+    background-color: var(--primary-1);
+    border: 1px solid var(--primary-3);
+    color: var(--primary-7);
   }
   &:active {
-    background-color: var(--color-primary-200);
-    border: 2px solid var(--color-primary-500);
+    background-color: var(--primary-2);
+    border: 1px solid var(--primary-5);
     box-shadow: none;
-    color: var(--color-primary-700);
+    color: var(--primary-7);
   }
-}
-
-.btn-inactive,
-.btn-inactive:hover,
-.btn-inactive:active {
-  background: repeating-linear-gradient(
-    -145deg,
-    rgba(209, 207, 216, 0),
-    rgba(209, 207, 216, 0) 10px,
-    rgba(209, 207, 216, 0.8) 10px,
-    rgba(209, 207, 216, 0.8) 20px
-  );
-  border: 2px solid transparent;
-  color: black;
-  cursor: not-allowed;
-  text-decoration: none;
 }

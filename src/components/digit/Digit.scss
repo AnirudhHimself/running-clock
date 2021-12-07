@@ -14,15 +14,13 @@
 
 @keyframes animate-digit-entrance {
   0% {
-    transform: translate(0px, calc(-1 * var(--s-5)));
+    transform: translate(0px, calc(-1 * var(--spacing-5)));
     opacity: 0;
   }
-
   70% {
-    transform: translate(0px, var(--s-2));
+    transform: translate(0px, var(--spacing-2));
     opacity: 0.6;
   }
-
   100% {
     transform: translate(0px, 0px);
     opacity: 1;
