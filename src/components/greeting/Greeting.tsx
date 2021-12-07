@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Greeting.scss";
 
-export function Greeting(props: any) {
+export function Greeting() {
   const [today, setToday] = useState<string>("");
 
   /**
