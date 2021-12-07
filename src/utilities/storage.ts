@@ -4,12 +4,14 @@ export type IStorage = {
   elapsedTime: number;
 };
 
+type IStorageKey = keyof IStorage;
+
 /**
  * Helper to read an item from localStorage.
  * @param key
  * @returns
  */
-export const readFromStorage = (key: string): string | null => {
+export const readFromStorage = (key: string): any => {
   // null items get cast to 'null' which get cast back to null by
   // JSON.parse. Yeah. It's weird.
   return JSON.parse(String(window.localStorage.getItem(key)));
@@ -48,7 +50,7 @@ export const resetStopwatchData = () => {
     elapsedTime: 0,
   };
   Object.keys(storageDefaults).map((key) => {
-    writeToStorage(key, storageDefaults[key as keyof IStorage]);
+    writeToStorage(key, storageDefaults[key as IStorageKey]);
   });
 };
 
@@ -58,7 +60,7 @@ export const resetStopwatchData = () => {
  */
 export const writeStopwatchData = (stopwatchData: IStorage) => {
   Object.keys(stopwatchData).map((key) => {
-    writeToStorage(key, stopwatchData[key as keyof IStorage]);
+    writeToStorage(key, stopwatchData[key as IStorageKey]);
   });
 };
 
@@ -74,7 +76,8 @@ export const initializeStorage = () => {
   };
   Object.keys(storageDefaults).map((key) => {
     if (!readFromStorage(key)) {
-      writeToStorage(key, storageDefaults[key as keyof IStorage]);
+      console.log(readFromStorage(key));
+      writeToStorage(key, storageDefaults[key as IStorageKey]);
     }
   });
 };

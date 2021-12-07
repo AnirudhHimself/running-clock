@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { Controls } from "components/controls";
 import { Button } from "components/button";
 import { Clock } from "components/clock";
-import { readStopwatchData, writeStopwatchData } from "utilities";
+import { readStopwatchData, writeStopwatchData, IStorage } from "utilities";
 
 import "./Stopwatch.scss";
 
@@ -17,7 +17,7 @@ export const Stopwatch = () => {
    * (We do not want to render until all state is synced up).
    */
   useLayoutEffect(() => {
-    const { elapsedTime, isRunning, timestamp } = readStopwatchData();
+    const { elapsedTime, isRunning, timestamp }: IStorage = readStopwatchData();
     if (timestamp > 0 && isRunning) {
       setStartTime(timestamp);
       setSecondsElapsed(Math.round((Date.now() - timestamp) / 1000));
