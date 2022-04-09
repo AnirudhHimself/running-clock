@@ -1,19 +1,15 @@
 import "./Button.scss";
 
 interface Props {
+  children: React.ReactNode;
+  handleClick: () => void;
   variant: "primary" | "inactive" | "secondary";
-  handleClick: any;
 }
 
-export const Button: React.FC<Props> = ({ variant, children, handleClick }) => {
+export const Button: React.FC<Props> = ({ children, handleClick, variant }) => {
   const getButtonClassNames = (variant: string) => {
     const stylesList: Array<string> = ["btn"];
-    if (variant === "inactive") {
-      stylesList.push("btn-inactive");
-    }
-    if (variant === "secondary") {
-      stylesList.push("btn-secondary");
-    }
+    stylesList.push(`btn-${variant}`)
     return stylesList.join(" ");
   };
   return (
