@@ -1,11 +1,11 @@
-export type IStorage = {
+export type Storage = {
   timestamp: number;
   isRunning: boolean;
   elapsedTime: number;
 };
 
-type IStorageKey = keyof IStorage;
-
+export type StorageKey = keyof Storage;
+export type StorageValue = number | boolean | string
 /**
  * Helper to read an item from localStorage.
  * @param key
@@ -36,7 +36,7 @@ export const readStopwatchData = () => {
  * @param val
  */
 export const writeToStorage = (key: string, val: string | number | boolean) => {
-  window.localStorage.setItem(key, JSON.stringify(val));
+  window.localStorage.setItem(key, String(val));
 };
 
 /**
@@ -44,13 +44,13 @@ export const writeToStorage = (key: string, val: string | number | boolean) => {
  * from localStorage (similar to initialize)
  */
 export const resetStopwatchData = () => {
-  const storageDefaults: IStorage = {
+  const storageDefaults: Storage = {
     timestamp: 0,
     isRunning: false,
     elapsedTime: 0,
   };
   Object.keys(storageDefaults).map((key) => {
-    writeToStorage(key, storageDefaults[key as IStorageKey]);
+    writeToStorage(key, storageDefaults[key as StorageKey]);
   });
 };
 
@@ -58,9 +58,9 @@ export const resetStopwatchData = () => {
  * Writes updated stopwatch data to localStorage.
  * @param stopwatchData {timestamp, isRunning, elapsedTime}
  */
-export const writeStopwatchData = (stopwatchData: IStorage) => {
+export const writeStopwatchData = (stopwatchData: Storage) => {
   Object.keys(stopwatchData).map((key) => {
-    writeToStorage(key, stopwatchData[key as IStorageKey]);
+    writeToStorage(key, stopwatchData[key as StorageKey]);
   });
 };
 
@@ -69,15 +69,14 @@ export const writeStopwatchData = (stopwatchData: IStorage) => {
  * no available value for that particular item.
  */
 export const initializeStorage = () => {
-  const storageDefaults: IStorage = {
+  const storageDefaults: Storage = {
     timestamp: 0,
     isRunning: false,
     elapsedTime: 0,
   };
   Object.keys(storageDefaults).map((key) => {
-    if (!readFromStorage(key)) {
-      console.log(readFromStorage(key));
-      writeToStorage(key, storageDefaults[key as IStorageKey]);
+    if (!(key)) {
+      writeToStorage(key, storageDefaults[key as StorageKey]);
     }
   });
 };

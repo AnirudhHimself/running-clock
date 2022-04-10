@@ -9,7 +9,7 @@ interface Props {
 export const Button: React.FC<Props> = ({ children, handleClick, variant }) => {
   const getButtonClassNames = (variant: string) => {
     const stylesList: Array<string> = ["btn"];
-    stylesList.push(`btn-${variant}`)
+    stylesList.push(`btn-${variant}`);
     return stylesList.join(" ");
   };
   return (

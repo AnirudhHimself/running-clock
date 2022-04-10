@@ -7,4 +7,4 @@ export {
   initializeStorage,
 } from "./storage";
 
-export type { IStorage } from "./storage";
+export type { Storage, StorageKey, StorageValue } from "./storage";

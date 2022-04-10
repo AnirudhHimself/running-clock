@@ -2,11 +2,11 @@ import { Digit } from "components/digit";
 import { useEffect, useState, useRef } from "react";
 import "./Clock.scss";
 
-interface IClockProps {
+interface ClockProps {
   value: any;
 }
 
-interface IElapsedTime {
+interface ElapsedTime {
   minutes: number;
   seconds: number;
 }
@@ -15,8 +15,8 @@ interface IElapsedTime {
  * Component that formats and displays the
  * elapsed time in minutes and seconds.
  */
-export const Clock = (props: IClockProps) => {
-  const [elapsedTime, setElapsedTime] = useState<IElapsedTime>({
+export const Clock = (props: ClockProps) => {
+  const [elapsedTime, setElapsedTime] = useState<ElapsedTime>({
     minutes: 0,
     seconds: 0,
   });
@@ -74,9 +74,8 @@ export const Clock = (props: IClockProps) => {
    * @returns A formatted human listenable string of the elapsed time.
    */
   const getAriaLabel = () => {
-    return `${elapsedTime.minutes ?? 0} minutes and ${
-      elapsedTime.seconds ?? 0
-    } seconds.`;
+    return `${elapsedTime.minutes ?? 0} minutes and ${elapsedTime.seconds ?? 0
+      } seconds.`;
   };
 
   /**

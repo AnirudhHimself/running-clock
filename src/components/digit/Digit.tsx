@@ -4,7 +4,7 @@ import "./Digit.scss";
 /**
  * Presentational Component that displays
  * a single digit of time. It is also
- * responsible for the entrance animation.
+ * responsible for the digit entrance animation.
  */
 export const Digit = (props: any) => {
   const numberRef = useRef<HTMLSpanElement>(null);

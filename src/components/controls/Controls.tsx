@@ -1,7 +1,7 @@
 import "./Controls.scss";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const Controls: React.FC<Props> = ({ children }) => {

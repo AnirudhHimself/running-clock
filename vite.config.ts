@@ -22,6 +22,10 @@ export default defineConfig({
         find: "utilities",
         replacement: path.resolve(__dirname, "src/utilities"),
       },
+      {
+        find: "hooks",
+        replacement: path.resolve(__dirname, "src/hooks"),
+      }
     ],
   },
   plugins: [react()],
