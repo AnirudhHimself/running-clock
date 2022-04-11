@@ -1,4 +1,4 @@
-@import "styles/mixins.scss";
+@import 'styles/mixins.scss';
 
 .headline {
   color: var(--text-color);
@@ -6,7 +6,7 @@
   font-size: var(--fs-h3);
   line-height: var(--lh-default);
   padding-bottom: var(--spacing-1);
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     font-size: var(--fs-headline-medium-screen);
   }
 }
@@ -20,7 +20,7 @@
   font-family: var(--ff);
   line-height: var(--lh-default);
   margin-bottom: var(--spacing-1);
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     font-size: var(--fs-subheadline-medium-screen);
   }
 }

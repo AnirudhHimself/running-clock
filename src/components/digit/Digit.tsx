@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import "./Digit.scss";
+import { useEffect, useRef } from 'react';
+import './Digit.scss';
 
 /**
  * Presentational Component that displays
@@ -11,7 +11,7 @@ export const Digit = (props: any) => {
 
   useEffect(() => {
     if (numberRef.current) {
-      numberRef.current.classList.add("animate-digit");
+      numberRef.current.classList.add('animate-digit');
     }
   });
 

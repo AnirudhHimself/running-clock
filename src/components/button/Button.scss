@@ -1,4 +1,4 @@
-@import "styles/mixins.scss";
+@import 'styles/mixins.scss';
 
 .btn {
   background-color: var(--primary-5);
@@ -14,7 +14,7 @@
   text-transform: capitalize;
   transition: background-color 150ms ease-in, box-shadow 150ms ease-in;
   user-select: none;
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     padding: 12px var(--spacing-3);
   }
   &:hover {

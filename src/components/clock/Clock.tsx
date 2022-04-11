@@ -1,6 +1,6 @@
-import { Digit } from "components/digit";
-import { useEffect, useState, useRef } from "react";
-import "./Clock.scss";
+import { Digit } from 'components/digit';
+import { useEffect, useState, useRef } from 'react';
+import './Clock.scss';
 
 interface ClockProps {
   value: any;
@@ -38,16 +38,16 @@ export const Clock = (props: ClockProps) => {
    * for rendering.
    */
   useEffect(() => {
-    const minutes = elapsedTime.minutes > 0 ? String(elapsedTime.minutes) : "";
+    const minutes = elapsedTime.minutes > 0 ? String(elapsedTime.minutes) : '';
 
     const seconds =
       elapsedTime.minutes > 0 && elapsedTime.seconds < 10
         ? padSecondsToString(elapsedTime.seconds)
         : String(elapsedTime.seconds);
 
-    const newFormattedTime = minutes ? minutes + ":" + seconds : seconds;
+    const newFormattedTime = minutes ? minutes + ':' + seconds : seconds;
 
-    setFormattedTime(newFormattedTime.split(""));
+    setFormattedTime(newFormattedTime.split(''));
   }, [elapsedTime]);
 
   /**
@@ -62,9 +62,9 @@ export const Clock = (props: ClockProps) => {
   useEffect(() => {
     if (clockEl.current && formattedTime?.length) {
       if (formattedTime.length > 7) {
-        clockEl.current.style.setProperty("--fs-clock", "var(--fs-h3)");
+        clockEl.current.style.setProperty('--fs-clock', 'var(--fs-h3)');
       } else {
-        clockEl.current.style.removeProperty("--fs-clock");
+        clockEl.current.style.removeProperty('--fs-clock');
       }
     }
   }, [formattedTime]);
@@ -74,8 +74,9 @@ export const Clock = (props: ClockProps) => {
    * @returns A formatted human listenable string of the elapsed time.
    */
   const getAriaLabel = () => {
-    return `${elapsedTime.minutes ?? 0} minutes and ${elapsedTime.seconds ?? 0
-      } seconds.`;
+    return `${elapsedTime.minutes ?? 0} minutes and ${
+      elapsedTime.seconds ?? 0
+    } seconds.`;
   };
 
   /**
@@ -83,7 +84,7 @@ export const Clock = (props: ClockProps) => {
    * to display: 3:06 on the clock.
    */
   const padSecondsToString = (n: number) => {
-    const secondsString = n > 10 ? String(n) : "0" + String(n);
+    const secondsString = n > 10 ? String(n) : '0' + String(n);
     return secondsString;
   };
 

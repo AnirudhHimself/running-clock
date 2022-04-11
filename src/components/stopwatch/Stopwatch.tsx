@@ -1,36 +1,53 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect } from 'react';
 
-import { Controls } from "components/controls";
-import { Button } from "components/button";
-import { Clock } from "components/clock";
-import { readStopwatchData, writeStopwatchData, Storage } from "utilities";
+import { Controls } from 'components/controls';
+import { Button } from 'components/button';
+import { Clock } from 'components/clock';
+import { useStorage } from 'hooks';
 
-import "./Stopwatch.scss";
+import './Stopwatch.scss';
 
 export const Stopwatch = () => {
-  const [startTime, setStartTime] = useState<number>(0);
-  const [isClockRunning, setIsClockRunning] = useState<boolean>(false);
-  const [secondsElapsed, setSecondsElapsed] = useState<number>(0);
-
+  const [startTime, setStartTime, resetStartTime] = useStorage('timestamp', 0);
+  const [isClockRunning, setIsClockRunning, resetIsClockRunning] = useStorage(
+    'isRunning',
+    false,
+  );
+  const [secondsElapsed, setSecondsElapsed, resetSecondsElapsed] = useStorage(
+    'elapsedTime',
+    0,
+  );
   /**
-   * Initialize state from Storage (If it exists).
-   * (We do not want to render until all state is synced up).
+   * We need to update start time and elapsed time if the clock was
+   * previously running so that it correctly measures the time.
    */
   useLayoutEffect(() => {
-    const { elapsedTime, isRunning, timestamp }: Storage = readStopwatchData();
-    if (timestamp > 0 && isRunning) {
-      setStartTime(timestamp);
-      setSecondsElapsed(Math.round((Date.now() - timestamp) / 1000));
-      setIsClockRunning(true);
+    if (startTime > 0 && isClockRunning) {
+      setSecondsElapsed(Math.round((Date.now() - startTime) / 1000));
     }
-    if (timestamp > 0 && !isRunning) {
-      setStartTime(Date.now() - (timestamp - elapsedTime));
-      setSecondsElapsed(elapsedTime);
+    if (startTime > 0 && !isClockRunning) {
+      setStartTime(Date.now() - (startTime - secondsElapsed));
     }
   }, []);
 
   /**
-   * We run the stopwatch. setInterval has no actual guarantees for accuracy.
+   * Handle case where timer is paused or reset on a different tab.
+   */
+  useEffect(() => {
+    const handleStorageEvent = (e: StorageEvent) => {
+      if (e.key === 'isRunning') {
+        setIsClockRunning(JSON.parse(e.newValue ?? 'false'));
+      }
+      if (e.key === 'timestamp' && e.newValue === '0') {
+        handleResetClick();
+      } 
+    };
+    window.addEventListener('storage', e => handleStorageEvent(e));
+    return window.removeEventListener('storage', e => handleStorageEvent(e));
+  }, []);
+
+  /**
+   * Run the stopwatch. setInterval has no actual guarantees for accuracy.
    * So, we recalculate the elapsed time using Date.now() and set the Raw elapsed
    * time to the difference in timestamps. That way, at least on average, the stopwatch
    * will be accurate.
@@ -50,49 +67,29 @@ export const Stopwatch = () => {
     };
   }, [isClockRunning]);
 
-  /**
-   * Call updateStorage helper when any of secondsElapsed, isClockRunning,
-   * or startTime changes.
-   */
-  useEffect(() => {
-    updateStorage();
-  }, [startTime, isClockRunning, secondsElapsed]);
-
   const handleStartClick = () => {
     setIsClockRunning(!isClockRunning);
   };
 
   const handleResetClick = () => {
-    setSecondsElapsed(0);
-    setIsClockRunning(false);
-    setStartTime(0);
-    document.title = "Running Clock";
-  };
-
-  /**
-   * Helper to update storage when our clock has updated.
-   */
-  const updateStorage = () => {
-    const newData = {
-      timestamp: startTime,
-      isRunning: isClockRunning,
-      elapsedTime: secondsElapsed,
-    };
-    writeStopwatchData(newData);
+    resetSecondsElapsed();
+    resetIsClockRunning();
+    resetStartTime();
+    document.title = 'Running Clock';
   };
 
   return (
     <article className="stopwatch">
       <Clock value={secondsElapsed} />
       <Controls>
-        <Button handleClick={handleStartClick} variant={"primary"}>
+        <Button handleClick={handleStartClick} variant={'primary'}>
           {isClockRunning === true
-            ? "Pause"
+            ? 'Pause'
             : secondsElapsed === 0
-              ? "Start"
-              : "Resume"}
+            ? 'Start'
+            : 'Resume'}
         </Button>
-        <Button handleClick={handleResetClick} variant={"secondary"}>
+        <Button handleClick={handleResetClick} variant={'secondary'}>
           Reset
         </Button>
       </Controls>

@@ -1,4 +1,4 @@
-import "./Controls.scss";
+import './Controls.scss';
 
 interface Props {
   children: React.ReactNode;

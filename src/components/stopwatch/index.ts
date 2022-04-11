@@ -1,1 +1,1 @@
-export { Stopwatch } from "./Stopwatch";
+export { Stopwatch } from './Stopwatch';

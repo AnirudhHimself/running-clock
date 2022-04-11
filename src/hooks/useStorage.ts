@@ -1,32 +1,29 @@
-import { useEffect, useState } from 'react'
-import { readFromStorage, StorageKey, StorageValue, writeToStorage } from 'utilities'
+import { useState } from 'react';
+import {
+  readFromStorage,
+  StorageKey,
+  StorageValue,
+  writeToStorage,
+} from 'utilities';
 
-// TODO:
-export const useStoredTimer = (key: StorageKey, initialValue: StorageValue) => {
+/**
+ * Hook that wraps use state to keep react state in sync with
+ * local storage state.
+ */
+export const useStorage = (key: StorageKey, initialValue: StorageValue) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    const valueFromStorage = readFromStorage(key);
+    return valueFromStorage ? valueFromStorage : initialValue;
+  });
 
-    const [value, setValue] = useState(() => {
-        const valueFromStorage = readFromStorage(key);
-        const initial = valueFromStorage ? valueFromStorage : initialValue;
-        return initial;
-    });
+  const updateStoredValue = (newVal: StorageValue) => {
+    setStoredValue(newVal);
+    writeToStorage(key, newVal);
+  };
 
-    const updateValue = (newVal: StorageValue) => {
-        setValue(newVal);
-        writeToStorage(key, newVal);
-    }
+  const resetStoredValue = () => {
+    updateStoredValue(initialValue);
+  };
 
-    // If localStorage gets updated in a different window, we'll trigger this event.
-    useEffect(() => {
-        const handleStorageEvent = (e: StorageEvent) => {
-            updateValue(e.newValue!);
-        }
-        window.addEventListener('storage', (e) => handleStorageEvent)
-
-        return (
-            window.removeEventListener('storage', (e) => handleStorageEvent)
-        );
-    }, []);
-
-    return [value, updateValue]
-}
-
+  return [storedValue, updateStoredValue, resetStoredValue];
+};

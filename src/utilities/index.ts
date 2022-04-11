@@ -1,10 +1,6 @@
 export {
   readFromStorage,
-  readStopwatchData,
-  resetStopwatchData,
-  writeStopwatchData,
   writeToStorage,
-  initializeStorage,
-} from "./storage";
+} from './storage';
 
-export type { Storage, StorageKey, StorageValue } from "./storage";
+export type { Storage, StorageKey, StorageValue } from './storage';

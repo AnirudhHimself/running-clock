@@ -1,4 +1,4 @@
-@import "styles/mixins.scss";
+@import 'styles/mixins.scss';
 
 .main-content {
   align-items: center;
@@ -27,10 +27,10 @@
   padding: var(--spacing-4);
   position: relative;
   width: 100%;
-  @include respond-to("small") {
+  @include respond-to('small') {
     justify-content: space-evenly;
   }
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     flex-direction: row;
   }
 }
