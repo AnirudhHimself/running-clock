@@ -25,4 +25,3 @@ export const readFromStorage = (key: string): any => {
 export const writeToStorage = (key: string, val: string | number | boolean) => {
   window.localStorage.setItem(key, String(val));
 };
-

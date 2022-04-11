@@ -1,0 +1,4 @@
+/*
+  Content-Security-Policy: default-src 'self';font-src fonts.gstatic.com;style-src 'self' 
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block

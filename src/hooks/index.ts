@@ -1,2 +1,2 @@
-export {useCurrentDay } from './useCurrentDay';
-export {useStorage} from './useStorage';
+export { useCurrentDay } from './useCurrentDay';
+export { useStorage } from './useStorage';

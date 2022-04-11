@@ -40,7 +40,7 @@ export const Stopwatch = () => {
       }
       if (e.key === 'timestamp' && e.newValue === '0') {
         handleResetClick();
-      } 
+      }
     };
     window.addEventListener('storage', e => handleStorageEvent(e));
     return window.removeEventListener('storage', e => handleStorageEvent(e));
