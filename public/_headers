@@ -1,4 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'self';font-src fonts.gstatic.com;style-src 'self';img-src data: w3.org/svg/200; 
+  Content-Security-Policy: default-src 'self';font-src fonts.gstatic.com;style-src 'self';img-src data: w3.org/svg/200; object-src 'none'; base-uri 'none';
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  
