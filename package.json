@@ -5,11 +5,9 @@
     "build": "vite build",
     "dev": "vite",
     "format": "prettier --write .",
-    "prepack": "pinst --disable",
-    "postpack": "pinst --enable",
+    "prepare": "husky install",
     "serve": "vite preview",
-    "typecheck": "tsc --noEmit",
-    "postinstall": "husky install"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "~18.0.0",
