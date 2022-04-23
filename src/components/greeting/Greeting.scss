@@ -3,24 +3,35 @@
 .headline {
   color: var(--text-color);
   font-family: var(--ff);
+  font-weight: var(--fw-bold);
   font-size: var(--fs-h3);
   line-height: var(--lh-default);
   padding-bottom: var(--spacing-1);
   @include respond-to('medium') {
     font-size: var(--fs-headline-medium-screen);
   }
+  &::selection {
+    background: var(--primary-1);
+  }
 }
 
 .headline-accent {
   color: var(--primary-5);
+  &::selection {
+    background: var(--primary-1);
+  }
 }
 
 .subheadline {
   font-size: var(--fs-subheadline-small-screen);
   font-family: var(--ff);
+  font-weight: var(--fw-bold);
   line-height: var(--lh-default);
   margin-bottom: var(--spacing-1);
   @include respond-to('medium') {
     font-size: var(--fs-subheadline-medium-screen);
+  }
+  &::selection {
+    background: var(--primary-1);
   }
 }

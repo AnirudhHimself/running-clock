@@ -16,6 +16,7 @@ export const useStorage = (key: StorageKey, initialValue: StorageValue) => {
     return valueFromStorage ? valueFromStorage : initialValue;
   });
 
+  // TODO: Doesn't support the function update version of setState.
   const updateStoredValue = (newVal: StorageValue) => {
     setStoredValue(newVal);
     writeToStorage(key, newVal);

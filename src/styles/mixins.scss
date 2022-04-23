@@ -1,3 +1,5 @@
+// I could have used better breakpoints.
+// Just kinda eyeballed the result.
 $breakpoints: (
   'xs': 370px,
   'small': 480px,
@@ -10,6 +12,9 @@ $breakpoints: (
  * Credit:
  * Kitty Giraudel from
  * https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
+ *
+ * This helps maintain "mobile-first" responsive design because all the breakpoint 
+ * queries are min-width. 
  */
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {

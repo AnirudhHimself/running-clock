@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 import { Controls } from 'components/controls';
 import { Button } from 'components/button';
@@ -17,6 +17,7 @@ export const Stopwatch = () => {
     'elapsedTime',
     0,
   );
+
   /**
    * We need to update start time and elapsed time if the clock was
    * previously running so that it correctly measures the time.

@@ -1,47 +1,29 @@
 @import 'styles/mixins.scss';
 
 .main-content {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  & > * {
-    flex: 1 0 auto;
-  }
+  display: grid;
+  place-content: center;;
 }
 
 .heading-content {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-content: center;;
   padding: 0 var(--spacing-2) 0 0;
-  user-select: none;
 }
 
 .home-page {
+  background: var(--yellow-1);
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: space-between;
-  margin: 0 auto;
-  min-height: 100vh;
-  min-width: 328px;
+  min-width: map-get($breakpoints, 'xs');
   padding: var(--spacing-4);
   position: relative;
-  width: 100%;
   @include respond-to('small') {
     justify-content: space-evenly;
   }
   @include respond-to('medium') {
     flex-direction: row;
   }
-}
-
-.page-bg {
-  background: var(--yellow-1);
-  height: 100%;
-  opacity: 0.6;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: -1;
 }
