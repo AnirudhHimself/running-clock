@@ -1,12 +1,12 @@
 .stopwatch {
   align-items: center;
   background: white;
-  border-radius: var(--radius-24);
-  box-shadow: var(--shadow-4);
+  border-radius: var(--radius-16);
+  box-shadow: var(--shadow-2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 448px;
   min-width: 296px; /* For the ~Aesthetic~ */
-  min-height: 302px;
+  min-height: 296px;
 }

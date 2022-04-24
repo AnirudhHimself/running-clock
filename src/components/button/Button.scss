@@ -2,9 +2,8 @@
 
 .btn {
   background-color: var(--primary-5);
-  border: 2px solid transparent;
-  border-radius: var(--radius-16);
-  box-shadow: var(--shadow-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-8);
   color: white;
   font-family: var(--ff);
   font-size: var(--fs-button);
@@ -14,37 +13,38 @@
   text-transform: capitalize;
   transition: background-color 150ms ease-in, box-shadow 150ms ease-in;
   user-select: none;
-  @include respond-to('medium') {
-    padding: 12px var(--spacing-3);
-  }
   &:hover {
     background-color: var(--primary-6);
     text-decoration: underline;
   }
+  // There's some browser variation on this one.
+  // Firefox doesn't seem to handle it properly when "clicking"
+  // via the spacebar :(
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=68851\
   &:active {
     background-color: var(--primary-7);
     box-shadow: none;
   }
   &:focus {
-    outline: 2px dashed var(--primary-4);
+    outline: 2px dashed var(--primary-5);
     outline-offset: 2px;
   }
 }
 
 .btn-secondary {
   background-color: white;
-  border: 2px solid var(--grey-3);
+  border: 1px solid var(--grey-3);
   color: var(--text-color);
   transition: border 150ms ease-in, background-color 150ms ease-in,
     box-shadow 150ms ease-in, color 150ms ease-in;
   &:hover {
     background-color: var(--primary-1);
-    border: 2px solid var(--primary-3);
+    border: 1px solid var(--primary-3);
     color: var(--primary-7);
   }
   &:active {
     background-color: var(--primary-2);
-    border: 2px solid var(--primary-5);
+    border: 1px solid var(--primary-5);
     box-shadow: none;
     color: var(--primary-7);
   }

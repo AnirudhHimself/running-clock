@@ -1,6 +1,6 @@
 .control-container {
-  background: var(--secondary-1);
-  border-radius: 0 0 var(--radius-24) var(--radius-24);
+  background: var(--grey-2);
+  border-radius: 0 0 var(--radius-16) var(--radius-16);
   padding: var(--spacing-3) var(--spacing-3);
   width: 100%;
 }
@@ -11,8 +11,5 @@
   width: 100%;
   & > button {
     width: 40%;
-  }
-  & > :first-child {
-    margin-right: 0px;
   }
 }
