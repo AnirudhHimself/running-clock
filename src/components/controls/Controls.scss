@@ -10,6 +10,6 @@
   justify-content: space-evenly;
   width: 100%;
   & > button {
-    width: 40%;
+    min-width: 40%;
   }
 }

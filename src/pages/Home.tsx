@@ -5,13 +5,14 @@ import './Home.scss';
 
 export function Home() {
   return (
-    <div className="home-page">
-      <section className="heading-content">
+    <main className="home-page">
+      <div className="heading-content">
         <Greeting />
-      </section>
-      <main className="main-content">
+      </div>
+      <div className="clock-content">
         <Stopwatch />
-      </main>
-    </div>
+      </div>
+      <div className="background"></div>
+    </main>
   );
 }

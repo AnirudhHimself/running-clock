@@ -1,10 +1,8 @@
 .digit {
-  display: inline-block;
   font-family: var(--ff-mono);
+  color: var(--text-color);
   font-kerning: none;
   letter-spacing: 0ch;
-  line-height: 0;
-  padding: 0;
   will-change: opacity, transform;
 }
 

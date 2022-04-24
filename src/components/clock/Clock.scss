@@ -1,7 +1,9 @@
 @import 'styles/mixins.scss';
 
 .clock {
+  align-items: center;
+  display: flex;
   font-size: var(--fs-clock);
-  padding-top: var(--spacing-10);
-  user-select: none;
+  height: 100%;
+  justify-content: center;
 }

@@ -36,15 +36,15 @@
   --fs-body: 1rem;
   --fs-small: 0.8rem;
 
-  --fs-headline-small-screen: var(--fs-h2);
-  --fs-headline-medium-screen: var(--fs-h1);
+  --fs-headline-small-screen: var(--fs-h3);
+  --fs-headline-medium-screen: var(--fs-h2);
   --fs-headline-large-screen: var(--fs-h1);
 
   --fs-subheadline-small-screen: var(--fs-h6);
   --fs-subheadline-medium-screen: var(--fs-h5);
   --fs-subheadline-large-screen: var(--fs-h4);
 
-  --fs-clock: 4rem;
+  --fs-clock: var(--fs-h1);
   --fs-button: var(--fs-body);
 
   --lh-body: 1.2em;
@@ -78,7 +78,7 @@
   --grey-8: #424242;
 
   --text-color: #282e31;
-  --bg-color: #e7eaf736;
+  --bg-color: #e7eaf7;
 
   /* Effects */
   --shadow-1: 0px 1px 3px rgba(16, 24, 40, 0.1),

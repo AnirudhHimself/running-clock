@@ -7,3 +7,9 @@
 :focus:not(:focus-visible) {
   outline: none;
 }
+
+html,
+body,
+body > * {
+  height: 100%;
+}
