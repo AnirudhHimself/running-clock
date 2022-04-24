@@ -1,6 +1,4 @@
 .husky/
-.yarn/
 dist/
 node_modules/
-.yarnrc.yml
-yarn.lock
+package-lock.lock
