@@ -9,16 +9,13 @@
   @include respond-to('medium') {
     font-size: var(--fs-headline-medium-screen);
   }
-  &::selection {
-    background: var(--primary-1);
+  @include respond-to('large') {
+    font-size: var(--fs-headline-large-screen);
   }
 }
 
 .headline-accent {
   color: var(--primary-5);
-  &::selection {
-    background: var(--primary-1);
-  }
 }
 
 .subheadline {
@@ -28,8 +25,5 @@
   margin-bottom: var(--spacing-1);
   @include respond-to('medium') {
     font-size: var(--fs-subheadline-medium-screen);
-  }
-  &::selection {
-    background: var(--primary-1);
   }
 }

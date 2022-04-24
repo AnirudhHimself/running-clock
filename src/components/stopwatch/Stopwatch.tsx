@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 
 import { Controls } from 'components/controls';
 import { Button } from 'components/button';

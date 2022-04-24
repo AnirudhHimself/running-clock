@@ -4,12 +4,16 @@
   padding: 0;
 }
 
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
 html,
 body,
 body > * {
   height: 100%;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*::selection {
+  background: var(--primary-1);
 }

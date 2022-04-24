@@ -12,7 +12,7 @@ export function Home() {
       <div className="clock-content">
         <Stopwatch />
       </div>
-      <div className="background"></div>
+      <span className="background"></span>
     </main>
   );
 }

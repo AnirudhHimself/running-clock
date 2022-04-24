@@ -10,13 +10,11 @@ I created this because I like having a tab on my browser open that displays a ru
 
 Most of the logic to format and display the elapsed time is in the Clock component. The logic for counting the elapsed time is in the Stopwatch component.
 
-## Roadmap (of sorts)
+## Ideas for Enhancements
 
-Just some thoughts on ways to expand the functionality of this project.
-
-- Maintain a history of times. Have the ability to "resume" from a previous time.
 - Functionality for other types of clocks (such as pomodoro and countdown).
-- Implement alternate color themes. (Not just light and dark. It should be user customizable).
-- Add ability to store other data such as notes, task lists, goals.
-- Encrypt notes data that's stored locally.
+- Maintain a history of times. Have the ability to "resume" from a previous time.
+- Implement user customizable color themes.
+- Add ability to store other kinds of data with the time such as a task list.
+- Encrypt data that's stored locally.
 - Come up with a project description and title that's actually good. Like come on, the clock is not physically running anywhere. What does it even mean.
