@@ -80,7 +80,7 @@ export const Stopwatch = () => {
   };
 
   return (
-    <article className="stopwatch">
+    <figure className="stopwatch">
       <Clock value={secondsElapsed} />
       <Controls>
         <Button handleClick={handleStartClick} variant={'primary'}>
@@ -94,6 +94,6 @@ export const Stopwatch = () => {
           Reset
         </Button>
       </Controls>
-    </article>
+    </figure>
   );
 };
