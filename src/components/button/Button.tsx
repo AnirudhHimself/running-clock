@@ -3,7 +3,7 @@ import './Button.scss';
 interface Props {
   children: React.ReactNode;
   handleClick: () => void;
-  variant: 'primary' | 'inactive' | 'secondary';
+  variant: 'primary' | 'secondary';
 }
 
 export const Button: React.FC<Props> = ({ children, handleClick, variant }) => {
@@ -13,12 +13,7 @@ export const Button: React.FC<Props> = ({ children, handleClick, variant }) => {
     return stylesList.join(' ');
   };
   return (
-    <button
-      className={getButtonClassNames(variant)}
-      disabled={variant === 'inactive'}
-      tabIndex={variant === 'inactive' ? -1 : 0}
-      onClick={handleClick}
-    >
+    <button className={getButtonClassNames(variant)} onClick={handleClick}>
       {children}
     </button>
   );
