@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onDestroy } from 'svelte';
   import ClockDisplay from './ClockDisplay.svelte';
   import Button from './Button.svelte';
 
-  import { readFromStorage } from './utils';
-  import { writeToStorage } from './utils';
+  import { readFromStorage } from './utils/storage';
+  import { writeToStorage } from './utils/storage';
 
   let secondsElapsed = readFromStorage('elapsedTime', 0) as number;
   let isClockRunning = readFromStorage('isRunning', false) as boolean;
@@ -12,23 +12,26 @@
 
   let intervalId: number;
 
-  onMount(() => {
-    if (startTime > 0 && isClockRunning) {
-      secondsElapsed = Math.round((Date.now() - startTime) / 1000);
+  if (startTime > 0 && isClockRunning) {
+    secondsElapsed = Math.round((Date.now() - startTime) / 1000);
+  }
+  if (secondsElapsed > 0 && !isClockRunning) {
+    startTime = Date.now() - (startTime - secondsElapsed);
+  }
+
+  const handleStorageEvent = (e: StorageEvent) => {
+    if (e.key === 'isRunning') {
+      isClockRunning = JSON.parse(e.newValue ?? 'false');
     }
-    if (secondsElapsed > 0 && !isClockRunning) {
-      startTime = Date.now() - (startTime - secondsElapsed);
+    if (e.key === 'timestamp' && e.newValue === '0') {
+      handleResetClick();
     }
-    const handleStorageEvent = (e: StorageEvent) => {
-      if (e.key === 'isRunning') {
-        isClockRunning = JSON.parse(e.newValue ?? 'false');
-      }
-      if (e.key === 'timestamp' && e.newValue === '0') {
-        handleResetClick();
-      }
-    };
-    window.addEventListener('storage', e => handleStorageEvent(e));
-    return window.removeEventListener('storage', e => handleStorageEvent(e));
+  };
+
+  window.addEventListener('storage', e => handleStorageEvent(e));
+
+  onDestroy(() => {
+    window.removeEventListener('storage', e => handleStorageEvent(e));
   });
 
   const handleStartClick = () => {
