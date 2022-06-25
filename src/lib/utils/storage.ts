@@ -11,10 +11,19 @@ export type StorageValue = number | boolean | string;
  * @param key
  * @returns
  */
-export const readFromStorage = (key: string): any => {
+export const readFromStorage = (
+  key: string,
+  defaultVal: StorageValue,
+): StorageValue => {
   // null items get cast to 'null' which get cast back to null by
   // JSON.parse. Yeah. It's weird.
-  return JSON.parse(String(window.localStorage.getItem(key)));
+  let result: StorageValue;
+  try {
+    result = JSON.parse(window.localStorage.getItem(key));
+  } catch {
+    result = defaultVal;
+  }
+  return result;
 };
 
 /**
@@ -22,6 +31,6 @@ export const readFromStorage = (key: string): any => {
  * @param key
  * @param val
  */
-export const writeToStorage = (key: string, val: string | number | boolean) => {
+export const writeToStorage = (key: string, val: StorageValue) => {
   window.localStorage.setItem(key, String(val));
 };
