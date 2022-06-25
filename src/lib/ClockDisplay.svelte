@@ -15,7 +15,7 @@
    */
   const formatTimeFromProp = (time: number) => {
     const hours = Math.floor(time / 60 / 60);
-    const minutes = Math.floor((time - (hours * 60 * 60)) / 60);
+    const minutes = Math.floor((time - hours * 60 * 60) / 60);
     const seconds = (time - hours * 60 * 60) % 60;
 
     switch (true) {
@@ -31,7 +31,7 @@
     }
   };
 
-  const maybePadTime = (smallerTimeUnit, biggerTimeUnit) => {
+  const maybePadTime = (smallerTimeUnit: number, biggerTimeUnit: number) => {
     return biggerTimeUnit > 0 && smallerTimeUnit < 10
       ? `0${smallerTimeUnit}`
       : `${smallerTimeUnit}`;
@@ -52,7 +52,10 @@
   $: digitElementsDisplayed = formattedElapsedTime.length;
 </script>
 
-<div class="clock" style={`--fs-clock: ${72 - 4 * digitElementsDisplayed}px`} role="timer">
+<div
+  class="clock"
+  style="{`--fs-clock: ${72 - 4 * digitElementsDisplayed}px`}"
+  role="timer">
   {#each formattedElapsedTime.split('') as digit}
     {#key digit}
       <span class="digit animate-digit">{digit}</span>
