@@ -4,7 +4,7 @@
     day: 'numeric',
   }).format(Date.now());
 
-  var pr = new Intl.PluralRules('en-US', { type: 'ordinal' });
+  const pr = new Intl.PluralRules('en-US', { type: 'ordinal' });
 
   const suffixes = new Map([
     ['one', 'st'],

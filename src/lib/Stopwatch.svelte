@@ -39,7 +39,6 @@
     secondsElapsed = 0;
     isClockRunning = false;
     startTime = 0;
-    document.title = 'Running Clock';
   };
 
   $: {
@@ -68,7 +67,7 @@
 </script>
 
 <figure class="stopwatch">
-  <ClockDisplay value="{secondsElapsed}" />
+  <ClockDisplay on:changeDocumentTitle value="{secondsElapsed}" />
   <div class="control-container">
     <div class="controls-button-group">
       <Button on:click="{handleStartClick}">

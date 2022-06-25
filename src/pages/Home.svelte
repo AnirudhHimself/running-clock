@@ -1,6 +1,10 @@
 <script lang="ts">
   import Greeting from '../lib/Greeting.svelte';
   import Stopwatch from '../lib/Stopwatch.svelte';
+
+  const updateDocumentTitle = (e: CustomEvent) => {
+    document.title = e.detail.title;
+  };
 </script>
 
 <main class="home-page">
@@ -8,7 +12,7 @@
     <Greeting />
   </div>
   <div class="clock-content">
-    <Stopwatch />
+    <Stopwatch on:changeDocumentTitle="{updateDocumentTitle}" />
   </div>
   <span class="background"></span>
 </main>

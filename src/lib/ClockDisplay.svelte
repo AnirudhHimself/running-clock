@@ -1,5 +1,7 @@
 <script lang="ts">
-  // import { slide, fade} from 'svelte/transition';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatchEvent = createEventDispatcher();
   /**
    * Attempted to come up with the least descriptive name for
    * "elapsed time in seconds". Just so I have to add this comment.
@@ -7,37 +9,50 @@
   export let value: number;
 
   /**
-   * Return an array so that we can loop over them to render the correct time.
-   * Yes, I felt like rendering each digit individually for the giggles and that
+   * Return an array so that we can loop over them to render the time.
+   * Each digit rendered individually for the giggles and that
    * digit entrance and exit animation.
    */
   const formatTimeFromProp = (time: number) => {
-    const minutes: number = Math.floor(time / 60);
-    const seconds: number = time % 60;
+    const hours = Math.floor(time / 60 / 60);
+    const minutes = Math.floor((time - (hours * 60 * 60)) / 60);
+    const seconds = (time - hours * 60 * 60) % 60;
 
-    if (minutes > 0) {
-      return `${minutes}:${maybePadSeconds(minutes, seconds)}`;
-    } else {
-      return `${maybePadSeconds(seconds, minutes)}`;
+    switch (true) {
+      case time < 60:
+        return `${seconds}`;
+      case time < 3600:
+        return `${minutes}:${maybePadTime(seconds, minutes)}`;
+      default:
+        return `${hours}:${maybePadTime(minutes, hours)}:${maybePadTime(
+          seconds,
+          Math.max(minutes, hours),
+        )}`;
     }
   };
 
-  const maybePadSeconds = (seconds: number, minutes: number) => {
-    return minutes > 0 && seconds < 10
-      ? '0' + String(seconds)
-      : String(seconds);
+  const maybePadTime = (smallerTimeUnit, biggerTimeUnit) => {
+    return biggerTimeUnit > 0 && smallerTimeUnit < 10
+      ? `0${smallerTimeUnit}`
+      : `${smallerTimeUnit}`;
   };
 
   $: formattedElapsedTime = formatTimeFromProp(value);
 
   $: {
-    // Don't love that a child component is modifying document.title. But this is where the state for that lives.
-    // Since the function of the page is entirely this stopwatch, it'll be okay for now.
-    document.title = `${formattedElapsedTime}`;
+    if (value > 0) {
+      dispatchEvent('changeDocumentTitle', {
+        title: `${formattedElapsedTime}`,
+      });
+    } else {
+      dispatchEvent('changeDocumentTitle', { title: `Running Clock` });
+    }
   }
+
+  $: digitElementsDisplayed = formattedElapsedTime.length;
 </script>
 
-<div class="clock" role="timer">
+<div class="clock" style={`--fs-clock: ${72 - 4 * digitElementsDisplayed}px`} role="timer">
   {#each formattedElapsedTime.split('') as digit}
     {#key digit}
       <span class="digit animate-digit">{digit}</span>

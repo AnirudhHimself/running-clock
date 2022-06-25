@@ -15,8 +15,6 @@ export const readFromStorage = (
   key: string,
   defaultVal: StorageValue,
 ): StorageValue => {
-  // null items get cast to 'null' which get cast back to null by
-  // JSON.parse. Yeah. It's weird.
   let result: StorageValue;
   try {
     result = JSON.parse(window.localStorage.getItem(key));
