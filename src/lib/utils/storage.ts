@@ -15,12 +15,8 @@ export const readFromStorage = (
   key: string,
   defaultVal: StorageValue,
 ): StorageValue => {
-  let result: StorageValue;
-  try {
-    result = JSON.parse(window.localStorage.getItem(key));
-  } catch {
-    result = defaultVal;
-  }
+  const result: StorageValue = JSON.parse(window.localStorage.getItem(key));
+  return result ?? defaultVal;
   return result;
 };
 
