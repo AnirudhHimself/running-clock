@@ -7,6 +7,8 @@
 </button>
 
 <style lang="scss">
+  // One day we could improve our css var usage
+  // here to reduce duplication of rules between variants.
   button {
     background-color: var(--primary-5);
     border: 1px solid transparent;

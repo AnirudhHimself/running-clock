@@ -31,6 +31,8 @@
     }
   };
 
+  // For a minute and 6 seconds we want to display 1:06 not 1:6.
+  // At the same time we don't want to display "07" for 7 seconds
   const maybePadTime = (smallerTimeUnit: number, biggerTimeUnit: number) => {
     return biggerTimeUnit > 0 && smallerTimeUnit < 10
       ? `0${smallerTimeUnit}`

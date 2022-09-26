@@ -6,19 +6,24 @@
   import { readFromStorage } from './utils/storage';
   import { writeToStorage } from './utils/storage';
 
+  // Load data or initialize local storage on mount.
   let secondsElapsed = readFromStorage('elapsedTime', 0) as number;
   let isClockRunning = readFromStorage('isRunning', false) as boolean;
   let startTime = readFromStorage('timestamp', 0) as number;
 
   let intervalId: number;
 
+  // When stopwatch was running when the app was previously closed.
   if (startTime > 0 && isClockRunning) {
     secondsElapsed = Math.round((Date.now() - startTime) / 1000);
   }
+
+  // When stopwatch was paused when the app was previously closed
   if (secondsElapsed > 0 && !isClockRunning) {
     startTime = Date.now() - (startTime - secondsElapsed);
   }
 
+  // Handle case where app running on multiple tabs
   const handleStorageEvent = (e: StorageEvent) => {
     if (e.key === 'isRunning') {
       isClockRunning = JSON.parse(e.newValue ?? 'false');
@@ -44,6 +49,8 @@
     startTime = 0;
   };
 
+  // Split up writes to individual reactive valuses, so they
+  // can be updated individually.
   $: {
     writeToStorage('elapsedTime', secondsElapsed);
   }
