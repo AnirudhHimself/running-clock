@@ -15,9 +15,8 @@ export const readFromStorage = (
   key: string,
   defaultVal: StorageValue,
 ): StorageValue => {
-  const result: StorageValue = JSON.parse(window.localStorage.getItem(key));
+  const result: StorageValue = JSON.parse(window.localStorage.getItem(key)!);
   return result ?? defaultVal;
-  return result;
 };
 
 /**

@@ -2,3 +2,5 @@
   Content-Security-Policy: default-src 'self'; font-src 'self';style-src 'self' 'unsafe-inline';img-src 'self' data: w3.org/svg/200; object-src 'none'; base-uri 'none';
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
+  cache-control: public
+  cache-control: max-age=86400
